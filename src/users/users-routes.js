@@ -7,4 +7,4 @@ module.exports = app => {
     .get(controller.list);
 
   app.route('/user/:id').delete(controller.delete);
-}; 
+};  

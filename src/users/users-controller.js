@@ -2,7 +2,7 @@ const User = require('./users-model');
 const { InvalidArgumentError, InternalServerError } = require('../erros');
 
 module.exports = {
-  adiciona: async (req, res) => { 
+  add: async (req, res) => { 
     const { name, email, password } = req.body;
 
     try { 
