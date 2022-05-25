@@ -1,15 +1,15 @@
-const User = require('./users/model');
+const User = require('./users-model');
 const { InvalidArgumentError, InternalServerError } = require('../erros');
 
 module.exports = {
-  adiciona: async (req, res) => {
+  adiciona: async (req, res) => { 
     const { name, email, password } = req.body;
 
-    try {
+    try { 
       const user = new User({
         name,
         email,
-        password
+        password 
       }); 
 
       await user.add();
@@ -37,7 +37,7 @@ module.exports = {
       await user.delete(); 
       res.status(200).send(); 
     } catch (erro) {
-      res.status(500).json({ error: error });
+      res.status(500).json({ erro: erro });
     }
   }
 };
