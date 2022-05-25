@@ -1,7 +1,7 @@
-const userDTO = require('./userDTO');
+const userDTO = require('./userDTO.js');
 const { InvalidArgumentError } = require('../erros');
-const validations = require('../validations'); 
-
+const validations = require('../validations');
+ 
 class User {
   constructor(user) {
     this.id = user.id;
