@@ -10,9 +10,9 @@ module.exports = {
         name,
         email,
         password
-      });
+      }); 
 
-      await user.adiciona();
+      await user.add();
 
       res.status(201).json();
     } catch (erro) {
@@ -24,20 +24,20 @@ module.exports = {
         res.status(500).json({ erro: erro.message });
       }
     }
+  }, 
+
+  list: async (req, res) => {
+    const users = await User.list();
+    res.json(users);  
   },
 
-  lista: async (req, res) => {
-    const users = await User.lista();
-    res.json(users);
-  },
-
-  deleta: async (req, res) => {
-    const user = await User.buscaPorId(req.params.id);
+  delete: async (req, res) => {
+    const user = await User.findById(req.params.id); 
     try {
-      await user.deleta();
-      res.status(200).send();
+      await user.delete(); 
+      res.status(200).send(); 
     } catch (erro) {
-      res.status(500).json({ erro: erro });
+      res.status(500).json({ error: error });
     }
   }
 };
