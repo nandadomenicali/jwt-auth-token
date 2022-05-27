@@ -24,5 +24,5 @@ class Post {
     return postsDTO.list();
   } 
 }
-
+ 
 module.exports = Post;
