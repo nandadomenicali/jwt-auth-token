@@ -1,7 +1,7 @@
 const userDTO = require('./userDTO.js');
 const { InvalidArgumentError } = require('../erros');
 const validations = require('../validations');
- 
+const bcrypt = require('bcrypt ');
 class User {
   constructor(user) {
     this.id = user.id;
@@ -9,7 +9,7 @@ class User {
     this.email = user.email;
     this.password = user.password;
 
-    this.check();
+    this.check(); 
   } 
 
   async add() {
@@ -54,6 +54,11 @@ class User {
   static list() {
     return userDTO.list();
   }
+
+  static generatePasswordHash(password){
+    const coastHash = 12; 
+    return bcrypt.hash(password, coastHash) 
+  }
 }
  
-module.exports = User;  
+module.exports = User;   
