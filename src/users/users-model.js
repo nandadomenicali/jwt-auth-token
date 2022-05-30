@@ -1,13 +1,13 @@
 const userDTO = require('./userDTO.js');
 const { InvalidArgumentError } = require('../erros');
 const validations = require('../validations');
-const bcrypt = require('bcrypt ');
+const bcrypt = require('bcrypt '); 
 class User {
   constructor(user) {
-    this.id = user.id;
+    this.id = user.id; 
     this.name = user.name;
     this.email = user.email;
-    this.password = user.password;
+    this.passwordHash = user.passwordHash;
 
     this.check(); 
   } 
@@ -20,12 +20,17 @@ class User {
     return userDTO.add(this);
   }
 
+  async addPassword(password){ 
+    validations.notNull(password, 'password');
+    validations.minSize(password, 'password', 8);  
+    validations.maxSize(password, 'password', 64);  
+    
+    this.passwordHash = await User.generatePasswordHash(password);
+  }
+ 
   check() {
     validations.notNull(this.name, 'name');
     validations.notNull(this.email, 'email');
-    validations.notNull(this.password, 'password');
-    validations.minSize(this.password, 'password', 8);  
-    validations.maxSize(this.password, 'password', 64);
   }
  
   
