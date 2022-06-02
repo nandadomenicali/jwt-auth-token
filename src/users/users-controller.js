@@ -1,5 +1,5 @@
 const User = require('./users-model');
-const { InvalidArgumentError, InternalServerError } = require('../erros');
+const { InvalidArgumentError, InternalServerError } = require('../utils/erros');
 
 module.exports = {
   add: async (req, res) => { 

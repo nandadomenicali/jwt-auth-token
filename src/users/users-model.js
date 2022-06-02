@@ -1,5 +1,5 @@
 const userDTO = require('./userDTO.js');
-const { InvalidArgumentError } = require('../erros');
+const { InvalidArgumentError } = require('../utils/erros');
 const validations = require('../validations');
 const bcrypt = require('bcrypt '); 
 class User {
