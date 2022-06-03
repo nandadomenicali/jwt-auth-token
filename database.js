@@ -9,19 +9,20 @@ const POSTS_SCHEMA = `
   )
   `;
 
-const USUARIOS_SCHEMA = `
+const USERS_SCHEMA = `
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(40) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    passwordHash VARCHAR(255) NOT NULL 
   )
   `;
 
 db.serialize(() => {
   db.run('PRAGMA foreign_keys=ON');
   db.run(POSTS_SCHEMA);
-  db.run(USUARIOS_SCHEMA);
+  db.run(USERS_SCHEMA);
 
   db.each('SELECT * FROM users', (err, users) => {
     console.log('users: ');
